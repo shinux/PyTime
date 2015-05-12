@@ -11,7 +11,7 @@ py25 = py < (2, 6, 0)
 
 str_tuple = (str,) if py3k else (str, unicode)
 
-_cur = str(datetime.datetime.today().date())
+_current = str(datetime.datetime.today().date())
 
 
 def _exchange_y_d(string, y_l):
@@ -169,4 +169,3 @@ class BaseParser(object):
 if __name__ == "__main__":
     a = datetime.date.today()
     BaseParser.main(a)
-    #print(_cur)
