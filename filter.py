@@ -5,6 +5,7 @@ import sys
 import datetime
 import re
 from .exception import UnexpectedTypeError, CanNotFormatError
+from itertools import chain
 
 
 py = sys.version_info
@@ -196,17 +197,17 @@ class BaseParser(object):
         :param base_str: str
         :return: dict
         """
-        temp_dict = {'years': '',
-                     'months': '',
-                     'days': '',
-                     'hours': '',
-                     'minutes': '',
-                     'seconds': ''}
+        temp_dict = {'years': 0,
+                     'months': 0,
+                     'days': 0,
+                     'hours': 0,
+                     'minutes': 0,
+                     'seconds': 0}
         # 根据数字切片 13m12s
         _pure_str = re.findall("[a-zA-Z]+", base_str)
         pure_num = [int(_) for _ in re.findall(r'\d+', base_str)]
         pure_str = [filter_unit(_) for _ in _pure_str]
-        result_dict = dict(temp_dict.items() + dict(zip(pure_str, pure_num)).items())
+        result_dict = dict(chain(temp_dict.items(), dict(zip(pure_str, pure_num)).items()))
         if result_dict['months'] >= 12:
             advance = result_dict['months'] // 12
             remain = result_dict['months'] % 12

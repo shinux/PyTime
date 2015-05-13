@@ -14,8 +14,8 @@
 
 import datetime
 import calendar
-from filter import BaseParser, str_tuple
-from exception import CanNotFormatError, UnexpectedTypeError
+from .filter import BaseParser, str_tuple
+from .exception import CanNotFormatError, UnexpectedTypeError
 
 
 bp = BaseParser.main
@@ -124,15 +124,20 @@ def before(base=_datetime, diff=None):
         return _base
     result_dict = dp(diff)
     for unit in result_dict:
-        if not result_dict[unit]:
+        _val = result_dict[unit]
+        if not _val:
             continue
         if unit == 'years':
-            _base = _base.replace(year=(_base.year - result_dict[unit]))
+            _base = _base.replace(year=(_base.year - _val))
         elif unit == 'months':
-            if _base.month <= result_dict[unit]:
-                pass
-                # TODO: 现在月份已经不会大于12了，但是考虑到大于当前月份时，还要做年份的减少
-                #result_dict[unit] %
+            if _base.month <= _val:
+                _month_diff = 12 - (_val - _base.month)
+                _base = _base.replace(year=_base.year - 1).replace(month=_month_diff)
+            else:
+                _base = _base.replace(month=_base.month - _val)
+        elif unit in ['days', 'hours', 'minuts', 'seconds']:
+            _base = _base - datetime.timedelta(**{unit: _val})
+    return _base
 
 
 # TODO: 加
