@@ -67,12 +67,20 @@ class PyTimeException(Exception):
     """ A base class for exceptions used by pytime. """
 
 
+class UnexpectedTypeError(PyTimeException):
+    """unexpected type appears"""
+
+
+class CanNotFormatError(PyTimeException):
+    """parameter too odd"""
+
+
 ########################
 # function method
 ########################
 
 
-def daysrange(start=None, end=None):
+def daysrange(first=None, second=None):
     """
     return all days between start and end
 
@@ -80,8 +88,10 @@ def daysrange(start=None, end=None):
     :param end: datetime, date or string
     :return: list
     """
-    days_between = (end - start).days
-    date_list = [end - datetime.timedelta(days=x) for x in range(0, days_between+1)]
+    _first, _second = parse(first), parse(second)
+    (_start, _end) = (_second, _first) if _first > _second else (_first, _second)
+    days_between = (_end - _start).days
+    date_list = [_end - datetime.timedelta(days=x) for x in range(0, days_between+1)]
     return date_list
 
 

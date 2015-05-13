@@ -3,6 +3,7 @@
 
 import datetime
 import sys
+from .pytime import UnexpectedTypeError, CanNotFormatError
 
 py = sys.version_info
 py3k = py >= (3, 0, 0)
@@ -96,7 +97,9 @@ class BaseParser(object):
             if hasattr(method, '__call__'):
                 return method(value)
             else:
-                raise Exception('can not generate method for {value} type:{type}'.format(value=value, type=type(value)))
+                raise UnexpectedTypeError(
+                    'can not generate method for {value} type:{type}'.format(value=value, type=type(value)))
+
         return wrapper
 
     @classmethod
@@ -115,7 +118,7 @@ class BaseParser(object):
         elif len(string) < 18:
             _stamp = datetime.datetime.strptime(string, '%y-%m-%d %H:%M:%S')
         else:
-            raise Exception
+            raise CanNotFormatError
         return _stamp
 
     @staticmethod
@@ -154,7 +157,7 @@ class BaseParser(object):
                 except ValueError:
                     _stamp = datetime.datetime.strptime(_string, '%m%d%y').date()
             else:
-                raise Exception
+                raise CanNotFormatError
         return _stamp
 
     @staticmethod
@@ -167,5 +170,4 @@ class BaseParser(object):
 
 
 if __name__ == "__main__":
-    a = datetime.date.today()
-    BaseParser.main(a)
+    BaseParser.main(_current)
