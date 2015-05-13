@@ -14,10 +14,12 @@
 
 import datetime
 import calendar
-from filter import BaseParser
+from filter import BaseParser, str_tuple
+from exception import CanNotFormatError, UnexpectedTypeError
 
 
 bp = BaseParser.main
+dp = BaseParser.parse_diff
 
 
 def parse(value):
@@ -27,9 +29,12 @@ def parse(value):
 def count(value1, value2):
     return parse(value1) - parse(value2)
 
+
 # max, min
 
+
 _date = datetime.date.today()
+_datetime = datetime.datetime.now()
 _year = _date.year
 _month = _date.month
 _day = _date.day
@@ -59,33 +64,16 @@ def yesterday(date=None):
 
 
 ########################
-# Exceptions
-########################
-
-
-class PyTimeException(Exception):
-    """ A base class for exceptions used by pytime. """
-
-
-class UnexpectedTypeError(PyTimeException):
-    """unexpected type appears"""
-
-
-class CanNotFormatError(PyTimeException):
-    """parameter too odd"""
-
-
-########################
 # function method
 ########################
 
 
 def daysrange(first=None, second=None):
     """
-    return all days between start and end
+    return all days between first and second
 
-    :param start: datetime, date or string
-    :param end: datetime, date or string
+    :param first: datetime, date or string
+    :param second: datetime, date or string
     :return: list
     """
     _first, _second = parse(first), parse(second)
@@ -104,6 +92,53 @@ def lastday(year=_year, month=_month):
     """
     last_day = calendar.monthrange(year, month)[1]
     return datetime.date(year=year, month=month, day=last_day)
+
+
+def midnight(arg=None):
+    """
+    convert date to datetime as midnight or get current day's midnight
+    :param arg:
+    :return:
+    """
+    if arg:
+        _arg = parse(arg)
+        if isinstance(_arg, datetime.date):
+            return datetime.datetime.combine(_arg, datetime.datetime.min.time())
+        elif isinstance(_arg, datetime.datetime):
+            return datetime.datetime.combine(_arg.date(), datetime.datetime.min.time())
+    else:
+        return datetime.datetime.combine(_date, datetime.datetime.min.time())
+
+
+def before(base=_datetime, diff=None):
+    """
+    count datetime before `base`
+    :param base:  base time
+    :param diff:  str
+    :return:
+    """
+    _base = parse(base)
+    if isinstance(_base, datetime.date):
+        _base = midnight(_base)
+    if not diff:
+        return _base
+    result_dict = dp(diff)
+    for unit in result_dict:
+        if not result_dict[unit]:
+            continue
+        if unit == 'years':
+            _base = _base.replace(year=(_base.year - result_dict[unit]))
+        elif unit == 'months':
+            if _base.month <= result_dict[unit]:
+                pass
+                # TODO: 现在月份已经不会大于12了，但是考虑到大于当前月份时，还要做年份的减少
+                #result_dict[unit] %
+
+
+# TODO: 加
+def after():
+    pass
+
 
 
 ######################

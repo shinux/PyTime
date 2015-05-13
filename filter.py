@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import datetime
 import sys
-from .pytime import UnexpectedTypeError, CanNotFormatError
+import datetime
+import re
+from .exception import UnexpectedTypeError, CanNotFormatError
+
 
 py = sys.version_info
 py3k = py >= (3, 0, 0)
@@ -20,6 +22,25 @@ def _exchange_y_d(string, y_l):
     _st_l = list(string)
     _st_l[:d_l], _st_l[-y_l:] = _st_l[-y_l:], _st_l[:d_l]
     return ''.join(_st_l)
+
+
+UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'y', 'Y'],
+             'months': ['months', 'month', 'mont', 'mon', 'mo', 'm'],
+             'weeks': ['weeks', 'week', 'wee', 'we', 'w', 'W'],
+             'days': ['days', 'day', 'da', 'd', 'D'],
+             'hours': ['hours', 'hour', 'hou', 'hr', 'ho', 'h', 'H'],
+             'minutes': ['minutes', 'minute', 'min', 'mi', 'M'],
+             'seconds': ['seconds', 'second', 'sec', 'se', 's', 'S']}
+
+
+def filter_unit(arg):
+    if len(arg) > 1:
+        arg = arg.lower()
+    result = [key for key in UNIT_DICT.keys() if arg in UNIT_DICT[key]]
+    if result:
+        return result[0]
+    else:
+        raise CanNotFormatError
 
 
 class BaseParser(object):
@@ -61,19 +82,22 @@ class BaseParser(object):
         :param string:
         :return:
         """
-        _string = string[:19]
-        _length = len(_string)
-        if _length > 10:
-            return BaseParser.parse_datetime
-        elif 6 <= _length <= 10:
-            if ':' in _string:
+        if not any(c.isalpha() for c in string):
+            _string = string[:19]
+            _length = len(_string)
+            if _length > 10:
+                return BaseParser.parse_datetime
+            elif 6 <= _length <= 10:
+                if ':' in _string:
+                    return BaseParser.parse_time
+                else:
+                    return BaseParser.parse_date
+            elif _length < 6:
                 return BaseParser.parse_time
             else:
-                return BaseParser.parse_date
-        elif _length < 6:
-            return BaseParser.parse_time
+                return BaseParser.parse_special
         else:
-            return BaseParser.parse_special
+            return BaseParser.parse_diff
 
     @staticmethod
     def _datetime_parser(value):
@@ -86,7 +110,6 @@ class BaseParser(object):
     def _main_parser(func):
         def wrapper(cls, *args, **kwargs):
             value = args[0]
-            method = None
             if isinstance(value, str_tuple):
                 method = BaseParser._str_parser(value)
             elif isinstance(value, (datetime.date, datetime.time, datetime.datetime)):
@@ -107,8 +130,6 @@ class BaseParser(object):
     def main(cls, value):
         """parse all type value"""
 
-    # parse string ###############
-
     @staticmethod
     def parse_datetime(string, formation=None):
         if formation:
@@ -118,7 +139,7 @@ class BaseParser(object):
         elif len(string) < 18:
             _stamp = datetime.datetime.strptime(string, '%y-%m-%d %H:%M:%S')
         else:
-            raise CanNotFormatError
+            raise CanNotFormatError('Need %Y-%m-%d %H:%M:%S or %y-%m-%d %H:%M:%S')
         return _stamp
 
     @staticmethod
@@ -167,6 +188,31 @@ class BaseParser(object):
     @staticmethod
     def parse_special(string):
         pass
+
+    @staticmethod
+    def parse_diff(base_str):
+        """
+        parse string to regular timedelta
+        :param base_str: str
+        :return: dict
+        """
+        temp_dict = {'years': '',
+                     'months': '',
+                     'days': '',
+                     'hours': '',
+                     'minutes': '',
+                     'seconds': ''}
+        # 根据数字切片 13m12s
+        _pure_str = re.findall("[a-zA-Z]+", base_str)
+        pure_num = [int(_) for _ in re.findall(r'\d+', base_str)]
+        pure_str = [filter_unit(_) for _ in _pure_str]
+        result_dict = dict(temp_dict.items() + dict(zip(pure_str, pure_num)).items())
+        if result_dict['months'] >= 12:
+            advance = result_dict['months'] // 12
+            remain = result_dict['months'] % 12
+            result_dict['years'] += advance
+            result_dict['months'] = remain
+        return result_dict
 
 
 if __name__ == "__main__":
