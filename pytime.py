@@ -112,8 +112,8 @@ def midnight(arg=None):
 
 def before(base=_datetime, diff=None):
     """
-    count datetime before `base`
-    :param base:  base time
+    count datetime before `base` time
+    :param base:  base time -> str/datetime/date
     :param diff:  str
     :return:
     """

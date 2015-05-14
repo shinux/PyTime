@@ -4,8 +4,8 @@
 import sys
 import datetime
 import re
-from .exception import UnexpectedTypeError, CanNotFormatError
 from itertools import chain
+from .exception import UnexpectedTypeError, CanNotFormatError
 
 
 py = sys.version_info
