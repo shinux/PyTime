@@ -25,6 +25,7 @@ def _exchange_y_d(string, y_l):
     return ''.join(_st_l)
 
 
+# with one letter `M` for minutes, `m` for month
 UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'y', 'Y'],
              'months': ['months', 'month', 'mont', 'mon', 'mo', 'm'],
              'weeks': ['weeks', 'week', 'wee', 'we', 'w', 'W'],
@@ -203,7 +204,7 @@ class BaseParser(object):
                      'hours': 0,
                      'minutes': 0,
                      'seconds': 0}
-        # 根据数字切片 13m12s
+
         _pure_str = re.findall("[a-zA-Z]+", base_str)
         pure_num = [int(_) for _ in re.findall(r'\d+', base_str)]
         pure_str = [filter_unit(_) for _ in _pure_str]
