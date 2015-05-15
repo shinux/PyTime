@@ -7,14 +7,6 @@ python:
   - "3.3"
   - "3.4"
 
-install:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then travis_retry pip install unittest2; fi
-
-# script:
-  # - travis_retry pip install https://github.com/shnode/PyTime/archive/master.zip
-  # - travis_retry pip install coveralls
-  # - coverage run --source=ezcf setup.py test
-
 after_success:
   coveralls
 
