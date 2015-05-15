@@ -1,13 +1,15 @@
 PyTime
 ======
 
-|Build Status| |Coverage Status|
+[|Build Status|\ ] (https://travis-ci.org/shnode/PyTime) |PyPI version|
+|Supported Python versions| |Supported Python implementations| |Coverage
+Status|
 
 PyTime is a easy-use Python module to solve the common needs of
 date/time/datetime.
 
-It allows you using string to operate datetime at most situation.Also
-provide some simple useful method.
+It allows you using string to operate datetime at most situation.PyTime
+Also provide some simple useful method.
 
 Install
 -------
@@ -19,7 +21,7 @@ Install
 Simple Usage
 ------------
 
-calculate ``datetime`` all by string, accept unit for short or overall
+Calculate ``datetime`` all by string, accept unit for short or overall
 length, and they can be out of order or in capital:
 
 ::
@@ -32,7 +34,7 @@ length, and they can be out of order or in capital:
     >>>pytime.after(pytime.tomorrow(), '23month3dy29minu')   # 23months 3days 29minutes after tomorrow
     datetime.datetime(2017, 4, 19, 0, 29)
 
-parse nonregular datetime string to datetime stamp:
+Parse nonregular datetime string to datetime stamp:
 
 ::
 
@@ -45,7 +47,7 @@ parse nonregular datetime string to datetime stamp:
     >>>pytime.parse('92-11-2')
     datetime.date(1992, 11, 2)
 
-get common festivals for single year:
+Get common festivals for single year:
 
 ::
 
@@ -58,7 +60,7 @@ get common festivals for single year:
     >>>pytime.easter(1999)          # 1999 Easter
     datetime.date(1999, 4, 4)
 
-pytime support calculate between ``date`` and ``datetime``, but set the
+Pytime support calculate between ``date`` and ``datetime``, but set the
 date to midnight:
 
 ::
@@ -66,7 +68,7 @@ date to midnight:
     >>>pytime.count('2015-5-17 23:23:23', pytime.tomorrow())
     datetime.timedelta(1, 84203)
 
-get days between two date, count timedelta by string.
+Get days between two date, count timedelta by string.
 
 ::
 
@@ -89,6 +91,11 @@ License
 MIT
 
 .. |Build Status| image:: https://travis-ci.org/shnode/PyTime.svg?branch=master
-   :target: https://travis-ci.org/shnode/PyTime
+.. |PyPI version| image:: https://badge.fury.io/py/pytime.svg
+   :target: http://badge.fury.io/py/pytime
+.. |Supported Python versions| image:: https://pypip.in/py_versions/pytime/badge.svg
+   :target: https://pypi.python.org/pypi/pytime/
+.. |Supported Python implementations| image:: https://pypip.in/implementation/pytime/badge.svg
+   :target: https://pypi.python.org/pypi/pytime/
 .. |Coverage Status| image:: https://coveralls.io/repos/shnode/PyTime/badge.svg
    :target: https://coveralls.io/r/shnode/PyTime

@@ -1,9 +1,13 @@
 # PyTime
-[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)] (https://travis-ci.org/shnode/PyTime)[![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime) [![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)[![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime)
+[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)] (https://travis-ci.org/shnode/PyTime)
+[![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime)
+[![Supported Python versions](https://pypip.in/py_versions/pytime/badge.svg)](https://pypi.python.org/pypi/pytime/)
+[![Supported Python implementations](https://pypip.in/implementation/pytime/badge.svg)](https://pypi.python.org/pypi/pytime/)
+[![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)
 
 PyTime is a easy-use Python module to solve the common needs of date/time/datetime.
 
-It allows you using string to operate datetime at most situation.Also provide some simple useful method.
+It allows you using string to operate datetime at most situation.PyTime Also provide some simple useful method.
 
 
 ## Install
@@ -12,7 +16,7 @@ It allows you using string to operate datetime at most situation.Also provide so
 
 ## Simple Usage
 
-calculate `datetime` all by string, accept unit for short or overall length, and they can be out of order or in capital:
+Calculate `datetime` all by string, accept unit for short or overall length, and they can be out of order or in capital:
 
     >>>from pytime import pytime
     >>>
@@ -22,7 +26,7 @@ calculate `datetime` all by string, accept unit for short or overall length, and
     >>>pytime.after(pytime.tomorrow(), '23month3dy29minu')   # 23months 3days 29minutes after tomorrow
     datetime.datetime(2017, 4, 19, 0, 29)
 
-parse nonregular datetime string to datetime stamp:
+Parse nonregular datetime string to datetime stamp:
 
     >>>pytime.parse('2015517')
     datetime.date(2015, 5, 17)
@@ -33,7 +37,7 @@ parse nonregular datetime string to datetime stamp:
     >>>pytime.parse('92-11-2')
     datetime.date(1992, 11, 2)
 
-get common festivals for single year:
+Get common festivals for single year:
 
     >>>pytime.father()              # Father's Day
     datetime.date(2015, 6, 21)
@@ -45,13 +49,13 @@ get common festivals for single year:
     datetime.date(1999, 4, 4)
 
 
-pytime support calculate between `date` and `datetime`, but set the date to midnight:
+Pytime support calculate between `date` and `datetime`, but set the date to midnight:
 
     >>>pytime.count('2015-5-17 23:23:23', pytime.tomorrow())
     datetime.timedelta(1, 84203)
 
 
-get days between two date, count timedelta by string.
+Get days between two date, count timedelta by string.
 
     >>>pytime.daysrange('2015-5-17', '2015-5-23')
     [datetime.date(2015, 5, 23),
