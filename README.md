@@ -1,6 +1,5 @@
 # PyTime
-[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime)
-[![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)
+[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime) [![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)
 ====
 
 PyTime is a easy-use Python module to solve the common needs of date/time/datetime.
@@ -26,7 +25,6 @@ calculate `datetime` all by string, accept unit for short or overall length, and
     >>>
     >>>pytime.after(pytime.tomorrow(), '23month3dy29minu')   # 23months 3days 29minutes after tomorrow
     datetime.datetime(2017, 4, 19, 0, 29)
-    >>>
 
 parse nonregular datetime string to datetime stamp:
 
