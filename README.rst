@@ -1,16 +1,13 @@
 PyTime
 ======
 
-|Build Status|
+|Build Status| |Coverage Status|
 
 PyTime is a easy-use Python module to solve the common needs of
 date/time/datetime.
 
-PyTime allows you using string to operate datetime at most situation.
-
-PyTime also provide some simple useful method.
-
-PyTime is a timesaver for Pythonista.
+It allows you using string to operate datetime at most situation.Also
+provide some simple useful method.
 
 Install
 -------
@@ -34,7 +31,6 @@ length, and they can be out of order or in capital:
     >>>
     >>>pytime.after(pytime.tomorrow(), '23month3dy29minu')   # 23months 3days 29minutes after tomorrow
     datetime.datetime(2017, 4, 19, 0, 29)
-    >>>
 
 parse nonregular datetime string to datetime stamp:
 
@@ -93,4 +89,6 @@ License
 MIT
 
 .. |Build Status| image:: https://travis-ci.org/shnode/PyTime.svg?branch=master
-   :target: https://travis-ci.org/shnode/PyTime.svg?branch=master
+   :target: https://travis-ci.org/shnode/PyTime
+.. |Coverage Status| image:: https://coveralls.io/repos/shnode/PyTime/badge.svg
+   :target: https://coveralls.io/r/shnode/PyTime
