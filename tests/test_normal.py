@@ -45,6 +45,11 @@ class TestPyTime(unittest.TestCase):
         this11 = pytime.parse('17/5/2015') == datetime.date(2015, 5, 17)
         self.assertTrue(this11)
 
+    def test_count(self):
+        self.assertTrue(pytime.count('2015517', '2015519'), datetime.timedelta(-2))
+        self.assertTrue(pytime.count('2015-5,17', '2015519 23:23:23'), datetime.)
+
+
 
 if __name__ == '__main__':
     unittest.main()

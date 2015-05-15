@@ -27,7 +27,13 @@ def parse(value):
 
 
 def count(value1, value2):
-    return parse(value1) - parse(value2)
+    _val1, _val2 = parse(value1), parse(value2)
+    if type(_val1) == type(_val2):
+        return _val1 - _val2
+    else:
+        _val1 = _val1 if isinstance(_val1, datetime.datetime) else midnight(_val1)
+        _val2 = _val2 if isinstance(_val2, datetime.datetime) else midnight(_val2)
+        return _val1 - _val2
 
 
 # max, min
