@@ -31,7 +31,7 @@ UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'y', 'Y'],
              'weeks': ['weeks', 'week', 'wee', 'we', 'w', 'W'],
              'days': ['days', 'day', 'dy', 'da', 'd', 'D'],
              'hours': ['hours', 'hour', 'hou', 'hr', 'ho', 'h', 'H'],
-             'minutes': ['minutes', 'minute', 'min', 'mi', 'M'],
+             'minutes': ['minutes', 'minute', 'minut', 'minu', 'min', 'mi', 'M'],
              'seconds': ['seconds', 'second', 'sec', 'se', 's', 'S']}
 
 

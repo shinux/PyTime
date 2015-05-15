@@ -5,7 +5,7 @@
     pytime
     ~~~~~~~~~~~~~
 
-    A easy-use module to solve the common needs of date/time/datetime.
+    A easy-use module to solve the datetime needs by string.
 
     :copyright: (c) 2015 by Sinux <nsinux@gmail.com>
     :license: MIT, see LICENSE for more details.
@@ -74,7 +74,7 @@ def yesterday(date=None):
 ########################
 
 
-def daysrange(first=None, second=None):
+def daysrange(first=None, second=None, wipe=False):
     """
     return all days between first and second
 
@@ -86,6 +86,8 @@ def daysrange(first=None, second=None):
     (_start, _end) = (_second, _first) if _first > _second else (_first, _second)
     days_between = (_end - _start).days
     date_list = [_end - datetime.timedelta(days=x) for x in range(0, days_between+1)]
+    if wipe and len(date_list) >= 2:
+        date_list = date_list[1:-1]
     return date_list
 
 
@@ -165,7 +167,7 @@ def after(base=_datetime, diff=None):
             if _base.month + _val <= 12:
                 _base = _base.replace(month=_base.month + _val)
             else:
-                _month_diff = 12 - (_base.month + _val)
+                _month_diff = (_base.month + _val) - 12
                 _base = _base.replace(year=_base.year + 1).replace(month=_month_diff)
         elif unit in ['days', 'hours', 'minutes', 'seconds']:
             _base = _base + datetime.timedelta(**{unit: _val})

@@ -1,7 +1,10 @@
-# PyTime
-[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime.svg?branch=master)
+PyTime
+======
 
-PyTime is a easy-use Python module to solve the common needs of date/time/datetime.
+|Build Status|
+
+PyTime is a easy-use Python module to solve the common needs of
+date/time/datetime.
 
 PyTime allows you using string to operate datetime at most situation.
 
@@ -9,13 +12,20 @@ PyTime also provide some simple useful method.
 
 PyTime is a timesaver for Pythonista.
 
-## Install
+Install
+-------
+
+::
 
     pip install pytime
 
-## Simple Usage
+Simple Usage
+------------
 
-calculate `datetime` all by string, accept unit for short or overall length, and they can be out of order or in capital:
+calculate ``datetime`` all by string, accept unit for short or overall
+length, and they can be out of order or in capital:
+
+::
 
     >>>from pytime import pytime
     >>>
@@ -28,6 +38,8 @@ calculate `datetime` all by string, accept unit for short or overall length, and
 
 parse nonregular datetime string to datetime stamp:
 
+::
+
     >>>pytime.parse('2015517')
     datetime.date(2015, 5, 17)
     >>>
@@ -39,6 +51,8 @@ parse nonregular datetime string to datetime stamp:
 
 get common festivals for single year:
 
+::
+
     >>>pytime.father()              # Father's Day
     datetime.date(2015, 6, 21)
     >>>
@@ -48,14 +62,17 @@ get common festivals for single year:
     >>>pytime.easter(1999)          # 1999 Easter
     datetime.date(1999, 4, 4)
 
+pytime support calculate between ``date`` and ``datetime``, but set the
+date to midnight:
 
-pytime support calculate between `date` and `datetime`, but set the date to midnight:
+::
 
     >>>pytime.count('2015-5-17 23:23:23', pytime.tomorrow())
     datetime.timedelta(1, 84203)
 
-
 get days between two date, count timedelta by string.
+
+::
 
     >>>pytime.daysrange('2015-5-17', '2015-5-23')
     [datetime.date(2015, 5, 23),
@@ -70,7 +87,10 @@ get days between two date, count timedelta by string.
 
 and other useful methods for operate datetime easily.
 
-
-## License
+License
+-------
 
 MIT
+
+.. |Build Status| image:: https://travis-ci.org/shnode/PyTime.svg?branch=master
+   :target: https://travis-ci.org/shnode/PyTime.svg?branch=master
