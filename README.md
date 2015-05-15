@@ -1,14 +1,10 @@
 # PyTime
 [![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime) [![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)
-====
 
 PyTime is a easy-use Python module to solve the common needs of date/time/datetime.
 
-PyTime allows you using string to operate datetime at most situation.
+It allows you using string to operate datetime at most situation.Also provide some simple useful method.
 
-PyTime also provide some simple useful method.
-
-PyTime is a timesaver for Pythonista.
 
 ## Install
 
