@@ -47,7 +47,6 @@ class TestPyTime(unittest.TestCase):
 
     def test_count(self):
         self.assertTrue(pytime.count('2015517', '2015519'), datetime.timedelta(-2))
-        self.assertTrue(pytime.count('2015-5,17', '2015519 23:23:23'), datetime.)
 
 
 
