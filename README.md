@@ -1,5 +1,5 @@
 # PyTime
-[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime) [![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)
+[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)] (https://travis-ci.org/shnode/PyTime)[![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime) [![Coverage Status](https://coveralls.io/repos/shnode/PyTime/badge.svg)](https://coveralls.io/r/shnode/PyTime)[![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime)
 
 PyTime is a easy-use Python module to solve the common needs of date/time/datetime.
 
