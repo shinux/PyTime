@@ -29,7 +29,7 @@ def _exchange_y_d(string, y_l):
 UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'y', 'Y'],
              'months': ['months', 'month', 'mont', 'mon', 'mo', 'm'],
              'weeks': ['weeks', 'week', 'wee', 'we', 'w', 'W'],
-             'days': ['days', 'day', 'da', 'd', 'D'],
+             'days': ['days', 'day', 'dy', 'da', 'd', 'D'],
              'hours': ['hours', 'hour', 'hou', 'hr', 'ho', 'h', 'H'],
              'minutes': ['minutes', 'minute', 'min', 'mi', 'M'],
              'seconds': ['seconds', 'second', 'sec', 'se', 's', 'S']}
@@ -50,7 +50,6 @@ class BaseParser(object):
 
     1990-10-28 23:23:23  - 19
     90-10-28 23:23:23    - 17
-    19901028 232323      - 15
 
     1990-10-28           - 10
     28-10-1990           - 10
@@ -67,7 +66,6 @@ class BaseParser(object):
     19901028             - 8
     90-10-28             - 8
     90/10/28             - 8
-    901028               - 6
 
     23:23:23             - 8
 
@@ -136,7 +134,7 @@ class BaseParser(object):
     def parse_datetime(string, formation=None):
         if formation:
             _stamp = datetime.datetime.strptime(string, formation)
-        elif len(string) > 18:
+        elif len(string) >= 18:
             _stamp = datetime.datetime.strptime(string, '%Y-%m-%d %H:%M:%S')
         elif len(string) < 18:
             _stamp = datetime.datetime.strptime(string, '%y-%m-%d %H:%M:%S')
@@ -162,12 +160,18 @@ class BaseParser(object):
                 try:
                     _stamp = datetime.datetime.strptime(_string, '%Y-%m-%d').date()
                 except ValueError:
-                    _stamp = datetime.datetime.strptime(_string, '%m-%d-%Y').date()
+                    try:
+                        _stamp = datetime.datetime.strptime(_string, '%m-%d-%Y').date()
+                    except ValueError:
+                        _stamp = datetime.datetime.strptime(_string, '%d-%m-%Y').date()
             else:
                 try:
                     _stamp = datetime.datetime.strptime(_string, '%y-%m-%d').date()
                 except ValueError:
-                    _stamp = datetime.datetime.strptime(_string, '%m-%d-%y').date()
+                    try:
+                        _stamp = datetime.datetime.strptime(_string, '%m-%d-%y').date()
+                    except ValueError:
+                        _stamp = datetime.datetime.strptime(_string, '%d-%m-%y').date()
         else:
             if len(_string) > 6:
                 try:
