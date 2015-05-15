@@ -7,6 +7,8 @@ python:
   - "3.3"
   - "3.4"
 
+script: nosetests
+
 after_success:
   coveralls
 
