@@ -1,5 +1,5 @@
 # PyTime
-[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)] (https://travis-ci.org/shnode/PyTime)
+[![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime)
 [![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime)
 [![Supported Python versions](https://pypip.in/py_versions/pytime/badge.svg)](https://pypi.python.org/pypi/pytime/)
 [![Supported Python implementations](https://pypip.in/implementation/pytime/badge.svg)](https://pypi.python.org/pypi/pytime/)

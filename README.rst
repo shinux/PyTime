@@ -1,9 +1,8 @@
 PyTime
 ======
 
-[|Build Status|\ ] (https://travis-ci.org/shnode/PyTime) |PyPI version|
-|Supported Python versions| |Supported Python implementations| |Coverage
-Status|
+|Build Status| |PyPI version| |Supported Python versions| |Supported
+Python implementations| |Coverage Status|
 
 PyTime is a easy-use Python module to solve the common needs of
 date/time/datetime.
@@ -91,6 +90,7 @@ License
 MIT
 
 .. |Build Status| image:: https://travis-ci.org/shnode/PyTime.svg?branch=master
+   :target: https://travis-ci.org/shnode/PyTime
 .. |PyPI version| image:: https://badge.fury.io/py/pytime.svg
    :target: http://badge.fury.io/py/pytime
 .. |Supported Python versions| image:: https://pypip.in/py_versions/pytime/badge.svg
