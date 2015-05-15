@@ -113,9 +113,9 @@ def midnight(arg=None):
 def before(base=_datetime, diff=None):
     """
     count datetime before `base` time
-    :param base:  base time -> str/datetime/date
+    :param base:  minuend -> str/datetime/date
     :param diff:  str
-    :return:
+    :return: datetime
     """
     _base = parse(base)
     if isinstance(_base, datetime.date):
@@ -135,15 +135,35 @@ def before(base=_datetime, diff=None):
                 _base = _base.replace(year=_base.year - 1).replace(month=_month_diff)
             else:
                 _base = _base.replace(month=_base.month - _val)
-        elif unit in ['days', 'hours', 'minuts', 'seconds']:
+        elif unit in ['days', 'hours', 'minutes', 'seconds']:
             _base = _base - datetime.timedelta(**{unit: _val})
     return _base
 
 
-# TODO: 加
-def after():
-    pass
-
+def after(base=_datetime, diff=None):
+    """
+    count datetime after diff args
+    :return: datetime
+    """
+    _base = parse(base)
+    if isinstance(_base, datetime.date):
+        _base = midnight(_base)
+    result_dict = dp(diff)
+    for unit in result_dict:
+        _val = result_dict[unit]
+        if not _val:
+            continue
+        if unit == 'years':
+            _base = _base.replace(year=(_base.year + _val))
+        elif unit == 'months':
+            if _base.month + _val <= 12:
+                _base = _base.replace(month=_base.month + _val)
+            else:
+                _month_diff = 12 - (_base.month + _val)
+                _base = _base.replace(year=_base.year + 1).replace(month=_month_diff)
+        elif unit in ['days', 'hours', 'minutes', 'seconds']:
+            _base = _base + datetime.timedelta(**{unit: _val})
+    return _base
 
 
 ######################

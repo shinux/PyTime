@@ -1,2 +1,2 @@
 # PyTime
-PyTime is a Python module which aims to solve most needs of datetime.
+PyTime is a easy-use Python module to solve the common needs of date/time/datetime.

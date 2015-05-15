@@ -25,7 +25,7 @@ def _exchange_y_d(string, y_l):
     return ''.join(_st_l)
 
 
-# with one letter `M` for minutes, `m` for month
+# with letter `M` for minutes, `m` for month
 UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'y', 'Y'],
              'months': ['months', 'month', 'mont', 'mon', 'mo', 'm'],
              'weeks': ['weeks', 'week', 'wee', 'we', 'w', 'W'],
