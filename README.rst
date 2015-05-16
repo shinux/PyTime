@@ -7,8 +7,8 @@ Python implementations| |Coverage Status|
 PyTime is a easy-use Python module which aims to operate
 date/time/datetime by string.
 
-PyTime allows you using nonregular string to generate and calculate
-datetime at most situation.
+PyTime allows you using nonregular datetime string to generate and
+calculate datetime at most situation.
 
 It Also provides you some simple useful methods for getting datetime you
 want.
