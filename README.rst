@@ -4,11 +4,14 @@ PyTime
 |Build Status| |PyPI version| |Supported Python versions| |Supported
 Python implementations| |Coverage Status|
 
-PyTime is a easy-use Python module to solve the common needs of
-date/time/datetime.
+PyTime is a easy-use Python module which aims to operate
+date/time/datetime by string.
 
-It allows you using string to operate datetime at most situation.PyTime
-Also provide some simple useful method.
+PyTime allows you using nonregular string to generate and calculate
+datetime at most situation.
+
+It Also provides you some simple useful methods for getting datetime you
+want.
 
 Install
 -------
@@ -17,11 +20,11 @@ Install
 
     pip install pytime
 
-Simple Usage
+Sample Usage
 ------------
 
 Calculate ``datetime`` all by string, accept unit for short or overall
-length, and they can be out of order or in capital:
+length, support out of order or in capital unit:
 
 ::
 
@@ -46,7 +49,7 @@ Parse nonregular datetime string to datetime stamp:
     >>>pytime.parse('92-11-2')
     datetime.date(1992, 11, 2)
 
-Get common festivals for single year:
+Get common festivals for designated year:
 
 ::
 
@@ -59,15 +62,15 @@ Get common festivals for single year:
     >>>pytime.easter(1999)          # 1999 Easter
     datetime.date(1999, 4, 4)
 
-Pytime support calculate between ``date`` and ``datetime``, but set the
-date to midnight:
+Pytime support calculate timedelta by string even between ``date`` and
+``datetime``, merely set the ``date`` to that day's midnight:
 
 ::
 
     >>>pytime.count('2015-5-17 23:23:23', pytime.tomorrow())
     datetime.timedelta(1, 84203)
 
-Get days between two date, count timedelta by string.
+Get days between two date.
 
 ::
 
