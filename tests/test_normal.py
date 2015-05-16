@@ -104,6 +104,19 @@ class TestPyTime(unittest.TestCase):
                                                                                                      50, 22)
         self.assertTrue(this10)
 
+        self.assertEqual(pytime.this_week('2015-5-17'), (datetime.date(2015, 5, 11), datetime.date(2015, 5, 18)))
+        self.assertEqual(pytime.this_week('2015-5-17', True), (datetime.date(2015, 5, 11), datetime.date(2015, 5, 17)))
+        self.assertEqual(pytime.last_week('2015-5-17'), (datetime.date(2015, 5, 4), datetime.date(2015, 5, 12)))
+        self.assertEqual(pytime.last_week('2015-5-17', True), (datetime.date(2015, 5, 4), datetime.date(2015, 5, 11)))
+        self.assertEqual(pytime.next_week('2015-5-17'), (datetime.date(2015, 5, 18), datetime.date(2015, 5, 26)))
+        self.assertEqual(pytime.next_week('2015-5-17', True), (datetime.date(2015, 5, 18), datetime.date(2015, 5, 25)))
+        self.assertEqual(pytime.this_month('2015-5-17'), (datetime.date(2015, 5, 1), datetime.date(2015, 6, 1)))
+        self.assertEqual(pytime.this_month('2015-5-17', True), (datetime.date(2015, 5, 1), datetime.date(2015, 5, 31)))
+        self.assertEqual(pytime.last_month('2015-5-17'), (datetime.date(2015, 4, 1), datetime.date(2015, 5, 1)))
+        self.assertEqual(pytime.last_month('2015-5-17', True), (datetime.date(2015, 4, 1), datetime.date(2015, 4, 30)))
+        self.assertEqual(pytime.next_month('2015-5-17'), (datetime.date(2015, 6, 1), datetime.date(2015, 7, 1)))
+        self.assertEqual(pytime.next_month('2015-5-17', True), (datetime.date(2015, 6, 1), datetime.date(2015, 6, 30)))
+
     def test_festival(self):
         this1 = pytime.newyear(2015) == datetime.date(2015, 1, 1)
         self.assertTrue(this1)

@@ -11,7 +11,6 @@
     :license: MIT, see LICENSE for more details.
 """
 
-
 import datetime
 import calendar
 from .filter import BaseParser, str_tuple
@@ -44,6 +43,9 @@ _datetime = datetime.datetime.now()
 _year = _date.year
 _month = _date.month
 _day = _date.day
+
+_SEVEN_DAYS = datetime.timedelta(days=7)
+_ONE_DAY = datetime.timedelta(days=1)
 
 
 def today(year=None):
@@ -85,7 +87,7 @@ def daysrange(first=None, second=None, wipe=False):
     _first, _second = parse(first), parse(second)
     (_start, _end) = (_second, _first) if _first > _second else (_first, _second)
     days_between = (_end - _start).days
-    date_list = [_end - datetime.timedelta(days=x) for x in range(0, days_between+1)]
+    date_list = [_end - datetime.timedelta(days=x) for x in range(0, days_between + 1)]
     if wipe and len(date_list) >= 2:
         date_list = date_list[1:-1]
     return date_list
@@ -174,28 +176,52 @@ def after(base=_datetime, diff=None):
     return _base
 
 
-def this_week(arg=_date):
-    pass
+def _datetime_to_date(arg):
+    _arg = parse(arg)
+    if isinstance(_arg, datetime.datetime):
+        _arg = _arg.date()
+    return _arg
 
 
-def last_week(arg=_date):
-    pass
+# Monday to Monday -> 00:00:00 to 00:00:00   month 1st -  next month 1st
+def this_week(arg=_date, clean=False):
+    _arg = _datetime_to_date(arg)
+    return _arg - datetime.timedelta(days=_arg.weekday()), _arg + datetime.timedelta(
+        days=6 - _arg.weekday()) if clean else _arg + datetime.timedelta(days=6 - _arg.weekday()) + _ONE_DAY
 
 
-def next_week(arg=_date):
-    pass
+def last_week(arg=_date, clean=False):
+    this_week_tuple = this_week(arg)
+    return this_week_tuple[0] - _SEVEN_DAYS, this_week_tuple[1] - _SEVEN_DAYS if clean \
+        else this_week_tuple[1] - _SEVEN_DAYS + _ONE_DAY
 
 
-def this_month(arg=_date):
-    pass
+def next_week(arg=_date, clean=False):
+    this_week_tuple = this_week(arg)
+    return this_week_tuple[0] + _SEVEN_DAYS, this_week_tuple[1] + _SEVEN_DAYS if clean \
+        else this_week_tuple[1] + _SEVEN_DAYS + _ONE_DAY
 
 
-def last_month(arg=_date):
-    pass
+def this_month(arg=_date, clean=False):
+    _arg = _datetime_to_date(arg)
+    return datetime.date(_arg.year, _arg.month, 1), lastday(_arg.year, _arg.month) if clean \
+        else lastday(_arg.year, _arg.month) + _ONE_DAY
 
 
-def next_month(arg=_date):
-    pass
+def last_month(arg=_date, clean=False):
+    _arg = _datetime_to_date(arg)
+    this_month_first_day = datetime.date(_arg.year, _arg.month, 1)
+    last_month_last_day = this_month_first_day - _ONE_DAY
+    last_month_first_day = datetime.date(last_month_last_day.year, last_month_last_day.month, 1)
+    return last_month_first_day, last_month_last_day if clean else this_month_first_day
+
+
+def next_month(arg=_date, clean=False):
+    _arg = _datetime_to_date(arg)
+    this_month_last_day = lastday(_arg.year, _arg.month)
+    next_month_first_day = this_month_last_day + _ONE_DAY
+    next_month_last_day = lastday(next_month_first_day.year, next_month_first_day.month)
+    return next_month_first_day, next_month_last_day if clean else next_month_last_day + _ONE_DAY
 
 
 ######################

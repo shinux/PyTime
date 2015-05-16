@@ -1,4 +1,4 @@
 __title__ = 'pytime'
 __license__ = 'MIT'
 __author__ = 'Sinux (nsinux@gmail.com)'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
