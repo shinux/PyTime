@@ -174,6 +174,30 @@ def after(base=_datetime, diff=None):
     return _base
 
 
+def this_week(arg=_date):
+    pass
+
+
+def last_week(arg=_date):
+    pass
+
+
+def next_week(arg=_date):
+    pass
+
+
+def this_month(arg=_date):
+    pass
+
+
+def last_month(arg=_date):
+    pass
+
+
+def next_month(arg=_date):
+    pass
+
+
 ######################
 # festival
 ######################

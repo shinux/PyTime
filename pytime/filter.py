@@ -75,6 +75,9 @@ class BaseParser(object):
     5:2                  - 3
     """
 
+    def __init__(self, *args, **kwargs):
+        pass
+
     @staticmethod
     def _str_parser(string):
         """
@@ -137,7 +140,13 @@ class BaseParser(object):
         elif len(string) >= 18:
             _stamp = datetime.datetime.strptime(string, '%Y-%m-%d %H:%M:%S')
         elif len(string) < 18:
-            _stamp = datetime.datetime.strptime(string, '%y-%m-%d %H:%M:%S')
+            if '-' in string:
+                _stamp = datetime.datetime.strptime(string, '%y-%m-%d %H:%M:%S')
+            else:
+                try:
+                    _stamp = datetime.datetime.strptime(string, '%Y%m%d %H:%M:%S')
+                except ValueError:
+                    _stamp = datetime.datetime.strptime(string, '%y%m%d %H:%M:%S')
         else:
             raise CanNotFormatError('Need %Y-%m-%d %H:%M:%S or %y-%m-%d %H:%M:%S')
         return _stamp
