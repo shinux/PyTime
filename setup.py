@@ -15,7 +15,7 @@ import pytime
 setup(
     name='pytime',
     version=pytime.__version__,
-    description='A easy-use module to solve the datetime needs by string',
+    description='A easy-use module to operate datetime by string',
     long_description=long_description,
     url='https://github.com/shnode/PyTime',
     author='Sinux',
