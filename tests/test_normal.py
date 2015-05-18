@@ -103,6 +103,10 @@ class TestPyTime(unittest.TestCase):
         this10 = pytime.after('2015-5-17 23:23:23', '59days 280minu, 22222sec') == datetime.datetime(2015, 7, 15, 10,
                                                                                                      50, 22)
         self.assertTrue(this10)
+        this11 = pytime.after('2015-5-17', '59days 9week') == datetime.datetime(2015, 9, 16, 0, 0)
+        self.assertTrue(this11)
+        this12 = pytime.before('2015-5-17', '5y 6m 7w 8d 9h 10mi 59s') == datetime.datetime(2009, 9, 20, 14, 49, 1)
+        self.assertTrue(this12)
 
         self.assertEqual(pytime.this_week('2015-5-17'), (datetime.date(2015, 5, 11), datetime.date(2015, 5, 18)))
         self.assertEqual(pytime.this_week('2015-5-17', True), (datetime.date(2015, 5, 11), datetime.date(2015, 5, 17)))

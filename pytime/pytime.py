@@ -133,6 +133,7 @@ def before(base=_datetime, diff=None):
     if not diff:
         return _base
     result_dict = dp(diff)
+    # weeks already covert to days in diff_parse function(dp)
     for unit in result_dict:
         _val = result_dict[unit]
         if not _val:

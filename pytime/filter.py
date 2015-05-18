@@ -26,9 +26,9 @@ def _exchange_y_d(string, y_l):
 
 
 # with letter `M` for minutes, `m` for month
-UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'y', 'Y'],
+UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'yr', 'y', 'Y'],
              'months': ['months', 'month', 'mont', 'mon', 'mo', 'm'],
-             'weeks': ['weeks', 'week', 'wee', 'we', 'w', 'W'],
+             'weeks': ['weeks', 'week', 'wee', 'we', 'wk', 'w', 'W'],
              'days': ['days', 'day', 'dy', 'da', 'd', 'D'],
              'hours': ['hours', 'hour', 'hou', 'hr', 'ho', 'h', 'H'],
              'minutes': ['minutes', 'minute', 'minut', 'minu', 'min', 'mi', 'M'],
@@ -213,6 +213,7 @@ class BaseParser(object):
         """
         temp_dict = {'years': 0,
                      'months': 0,
+                     'weeks': 0,
                      'days': 0,
                      'hours': 0,
                      'minutes': 0,
@@ -227,6 +228,8 @@ class BaseParser(object):
             remain = result_dict['months'] % 12
             result_dict['years'] += advance
             result_dict['months'] = remain
+        if result_dict['weeks']:
+            result_dict['days'] += result_dict['weeks'] * 7
         return result_dict
 
 
