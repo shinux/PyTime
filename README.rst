@@ -118,5 +118,5 @@ MIT
    :target: http://badge.fury.io/py/pytime
 .. |Supported Python versions| image:: https://pypip.in/py_versions/pytime/badge.svg
    :target: https://pypi.python.org/pypi/pytime/
-.. |Downloads| image:: https://pypip.in/download/pytime/badge.svg
+.. |Downloads| image:: https://pypip.in/download/pytime/badge.svg?period=week
    :target: https://pypi.python.org/pypi/pytime/

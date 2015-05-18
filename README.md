@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/shnode/PyTime.svg?branch=master)](https://travis-ci.org/shnode/PyTime)
 [![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime)
 [![Supported Python versions](https://pypip.in/py_versions/pytime/badge.svg)](https://pypi.python.org/pypi/pytime/)
-[![Downloads](https://pypip.in/download/pytime/badge.svg)](https://pypi.python.org/pypi/pytime/)
+[![Downloads](https://pypip.in/download/pytime/badge.svg?period=week)](https://pypi.python.org/pypi/pytime/)
 
 PyTime is a easy-use Python module which aims to operate date/time/datetime by string.
 
