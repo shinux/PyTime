@@ -15,7 +15,7 @@ want.
 Install
 -------
 
-::
+.. code:: python
 
     pip install pytime
 
@@ -25,19 +25,19 @@ Sample Usage
 Calculate ``datetime`` all by string, accept unit for short or overall
 length, support out of order or in capital unit:
 
-::
+.. code:: python
 
     >>>from pytime import pytime
     >>>
-    >>>pytime.before('2015.5.17', '2years 3mon 3d 2hr' )     # 2years 3monhts 3days 2hours before 2015.5.17
-    datetime.datetime(2013, 2, 13, 22, 0)
+    >>>pytime.before('2015.5.17', '2years 3mon 23week 3d 2hr')     # 2years 3monhts 23weeks 3days 2hours before 2015.5.17
+    datetime.datetime(2012, 9, 5, 22, 0)
     >>>
-    >>>pytime.after(pytime.tomorrow(), '23month3dy29minu')   # 23months 3days 29minutes after tomorrow
-    datetime.datetime(2017, 4, 19, 0, 29)
+    >>>pytime.after(pytime.tomorrow('15.5.17'), '23month3dy29minu')   # 23months 3days 29minutes after 2015-5-17's next day
+    datetime.datetime(2017, 4, 21, 0, 29)
 
 Parse nonregular datetime string to datetime stamp:
 
-::
+.. code:: python
 
     >>>pytime.parse('2015517')
     datetime.date(2015, 5, 17)
@@ -55,7 +55,7 @@ if you want clean date interval, you could set
 ``pytime.next_week(clean=True)`` to get the clean date for next week
 etc.
 
-::
+.. code:: python
 
     >>>pytime.this_week()
     (datetime.date(2015, 5, 11), datetime.date(2015, 5, 18))
@@ -72,14 +72,14 @@ etc.
 Pytime support calculate timedelta by string even between ``date`` and
 ``datetime``, merely set the ``date`` to that day's midnight:
 
-::
+.. code:: python
 
     >>>pytime.count('2015-5-17 23:23:23', pytime.tomorrow())
     datetime.timedelta(1, 84203)
 
 Get common festivals for designated year:
 
-::
+.. code:: python
 
     >>>pytime.father()              # Father's Day
     datetime.date(2015, 6, 21)
@@ -92,7 +92,7 @@ Get common festivals for designated year:
 
 Get days between two date.
 
-::
+.. code:: python
 
     >>>pytime.daysrange('2015-5-17', '2015-5-23')
     [datetime.date(2015, 5, 23),
