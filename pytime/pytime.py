@@ -78,7 +78,7 @@ def yesterday(date=None):
 
 def daysrange(first=None, second=None, wipe=False):
     """
-    return all days between first and second
+    get all days between first and second
 
     :param first: datetime, date or string
     :param second: datetime, date or string
@@ -95,7 +95,7 @@ def daysrange(first=None, second=None, wipe=False):
 
 def lastday(year=_year, month=_month):
     """
-    return the current month's last day
+    get the current month's last day
     :param year:  default to current year
     :param month:  default to current month
     :return: month's last day
@@ -107,8 +107,8 @@ def lastday(year=_year, month=_month):
 def midnight(arg=None):
     """
     convert date to datetime as midnight or get current day's midnight
-    :param arg:
-    :return:
+    :param arg: string or date/datetime
+    :return: datetime at 00:00:00
     """
     if arg:
         _arg = parse(arg)
@@ -133,7 +133,7 @@ def before(base=_datetime, diff=None):
     if not diff:
         return _base
     result_dict = dp(diff)
-    # weeks already covert to days in diff_parse function(dp)
+    # weeks already convert to days in diff_parse function(dp)
     for unit in result_dict:
         _val = result_dict[unit]
         if not _val:
@@ -154,6 +154,8 @@ def before(base=_datetime, diff=None):
 def after(base=_datetime, diff=None):
     """
     count datetime after diff args
+    :param base: str/datetime/date
+    :param diff: str
     :return: datetime
     """
     _base = parse(base)
@@ -178,6 +180,11 @@ def after(base=_datetime, diff=None):
 
 
 def _datetime_to_date(arg):
+    """
+    convert datetime/str to date
+    :param arg:
+    :return:
+    """
     _arg = parse(arg)
     if isinstance(_arg, datetime.datetime):
         _arg = _arg.date()
@@ -246,7 +253,7 @@ def christmas(year=None):
     return datetime.date(int(year), 12, 25) if year else datetime.date(_year, 12, 25)
 
 
-def chriseve(year=None):
+def christeve(year=None):
     return yesterday(christmas(year))
 
 

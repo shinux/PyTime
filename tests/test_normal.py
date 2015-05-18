@@ -130,7 +130,7 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this3)
         this4 = pytime.christmas(2012) == datetime.date(2012, 12, 25)
         self.assertTrue(this4)
-        this5 = pytime.chriseve(2011) == datetime.date(2011, 12, 24)
+        this5 = pytime.christeve(2011) == datetime.date(2011, 12, 24)
         self.assertTrue(this5)
         this6 = pytime.mother(2010) == datetime.date(2010, 5, 9)
         self.assertTrue(this6)

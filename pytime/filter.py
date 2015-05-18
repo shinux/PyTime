@@ -82,8 +82,8 @@ class BaseParser(object):
     def _str_parser(string):
         """
         return method by the length of string
-        :param string:
-        :return:
+        :param string: string
+        :return: method
         """
         if not any(c.isalpha() for c in string):
             _string = string[:19]
