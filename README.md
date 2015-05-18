@@ -17,7 +17,7 @@ It Also provides you some simple useful methods for getting datetime you want.
 ## Sample Usage
 
 Calculate `datetime` all by string, accept unit for short or overall length, support out of order or in capital unit:
-
+```python
     >>>from pytime import pytime
     >>>
     >>>pytime.before('2015.5.17', '2years 3mon 3d 2hr' )     # 2years 3monhts 3days 2hours before 2015.5.17
@@ -25,10 +25,10 @@ Calculate `datetime` all by string, accept unit for short or overall length, sup
     >>>
     >>>pytime.after(pytime.tomorrow(), '23month3dy29minu')   # 23months 3days 29minutes after tomorrow
     datetime.datetime(2017, 4, 19, 0, 29)
-
+```
 
 Parse nonregular datetime string to datetime stamp:
-
+```python
     >>>pytime.parse('2015517')
     datetime.date(2015, 5, 17)
     >>>
@@ -37,10 +37,11 @@ Parse nonregular datetime string to datetime stamp:
     >>>
     >>>pytime.parse('92-11-2')
     datetime.date(1992, 11, 2)
+```
 
 
 Calculate week and month in a easy way. Normally we want to use these binate date in script, from Monday to next Monday which means 00:00:00-23:59:59, and Month from 1st to next 1st in the same way, but if you want clean date interval, you could set `pytime.next_week(clean=True)` to get the clean date for next week etc.
-
+```python
     >>>pytime.this_week()
     (datetime.date(2015, 5, 11), datetime.date(2015, 5, 18))
 
@@ -52,16 +53,16 @@ Calculate week and month in a easy way. Normally we want to use these binate dat
 
     >>>pytime.next_month('2015-10-1')
     (datetime.date(2015, 11, 1), datetime.date(2015, 12, 1))
-
+```
 
 Pytime support calculate timedelta by string even between `date` and `datetime`, merely set the `date` to that day's midnight:
-
+```python
     >>>pytime.count('2015-5-17 23:23:23', pytime.tomorrow())
     datetime.timedelta(1, 84203)
-
+```
 
 Get common festivals for designated year:
-
+```python
     >>>pytime.father()              # Father's Day
     datetime.date(2015, 6, 21)
     >>>
@@ -70,11 +71,11 @@ Get common festivals for designated year:
     >>>
     >>>pytime.easter(1999)          # 1999 Easter
     datetime.date(1999, 4, 4)
-
+```
 
 
 Get days between two date.
-
+```python
     >>>pytime.daysrange('2015-5-17', '2015-5-23')
     [datetime.date(2015, 5, 23),
      datetime.date(2015, 5, 22),
@@ -83,7 +84,7 @@ Get days between two date.
      datetime.date(2015, 5, 19),
      datetime.date(2015, 5, 18),
      datetime.date(2015, 5, 17)]
-
+```
 ...
 
 and other useful methods.
