@@ -261,7 +261,6 @@ class BaseParser(object):
         
         date = date.replace(',','.')
         try:
-            import re
             day, year = date.split('.')[1] , date.split('.')[2]
             numeric_day = int(re.findall('\d+', day)[0])
             numeric_month = NAMED_MONTHS[month]
