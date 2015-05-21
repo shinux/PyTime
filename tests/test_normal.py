@@ -143,6 +143,28 @@ class TestPyTime(unittest.TestCase):
         this10 = pytime.thanks(2006) == datetime.date(2006, 11, 23)
         self.assertTrue(this10)
 
+    def test_from_str(self):
+        with self.assertRaises(Exception):
+            pytime.parse('App.19st,2015')
+            pytime.parse('App.19st,2015')
+
+        #validating the use with blank spaces
+        self.assertEqual(datetime.date(2015, 1, 1), pytime.parse('Jan.1 st, 2015'))
+        
+        #validating the name of months and the returned datetime
+        self.assertEqual(datetime.date(2015, 1, 2), pytime.parse('Jan.2st,2015'))
+        self.assertEqual(datetime.date(2015, 2, 19), pytime.parse('Feb.19st,2015'))
+        self.assertEqual(datetime.date(2015, 3, 19), pytime.parse('Mar.19st,2015'))
+        self.assertEqual(datetime.date(2015, 4, 19), pytime.parse('Apr.19st,2015'))
+        self.assertEqual(datetime.date(2015, 5, 19), pytime.parse('May.19st,2015'))
+        self.assertEqual(datetime.date(2015, 6, 19), pytime.parse('Jun.19st,2015'))
+        self.assertEqual(datetime.date(2014, 7, 19), pytime.parse('Jul.19st,2014'))
+        self.assertEqual(datetime.date(2015, 8, 19), pytime.parse('Agu.19st,2015'))
+        self.assertEqual(datetime.date(2015, 9, 19), pytime.parse('Sep.19st,2015'))
+        self.assertEqual(datetime.date(2015, 10, 19), pytime.parse('Oct.19st,2015'))
+        self.assertEqual(datetime.date(2015, 11, 19), pytime.parse('Nov.19st,2015'))
+        self.assertEqual(datetime.date(2014, 12, 19), pytime.parse('Dec.19st,2014'))
+
 
 if __name__ == '__main__':
     unittest.main()

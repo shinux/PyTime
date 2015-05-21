@@ -34,6 +34,9 @@ UNIT_DICT = {'years': ['years', 'year', 'yea', 'ye', 'yr', 'y', 'Y'],
              'minutes': ['minutes', 'minute', 'minut', 'minu', 'min', 'mi', 'M'],
              'seconds': ['seconds', 'second', 'sec', 'se', 's', 'S']}
 
+NAMED_MONTHS = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
+                'May': 5, 'Jun': 6, 'Jul': 7, 'Agu': 8,
+                'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
 
 def filter_unit(arg):
     if len(arg) > 1:
@@ -100,8 +103,21 @@ class BaseParser(object):
             else:
                 return BaseParser.parse_special
         else:
-            return BaseParser.parse_diff
+            return BaseParser.__parse_not_only_str
 
+    @staticmethod
+    def __parse_not_only_str(string):
+        functions_to_try = [BaseParser.from_str, BaseParser.parse_diff]
+        raised_exception = None 
+        for function in functions_to_try:
+            try:
+                return function(string)
+            except Exception, e:
+                raised_exception = e
+
+        if raised_exception:
+            raise raised_exception
+    
     @staticmethod
     def _datetime_parser(value):
         return value
@@ -119,7 +135,7 @@ class BaseParser(object):
                 method = BaseParser._datetime_parser
             else:
                 method = BaseParser._special_parser
-
+            
             if hasattr(method, '__call__'):
                 return method(value)
             else:
@@ -232,6 +248,26 @@ class BaseParser(object):
             result_dict['days'] += result_dict['weeks'] * 7
         return result_dict
 
+    @staticmethod
+    def from_str(date):
+        """
+            Given a date in the format: Jan,21st.2015
+            will return a datetime of it.
+        """
+
+        month = date[:3]
+        if month not in NAMED_MONTHS:
+            raise CanNotFormatError('Month not recognized')
+        
+        date = date.replace(',','.')
+        try:
+            import re
+            day, year = date.split('.')[1] , date.split('.')[2]
+            numeric_day = int(re.findall('\d+', day)[0])
+            numeric_month = NAMED_MONTHS[month]
+            return datetime.date(int(year), numeric_month, numeric_day)
+        except:
+            raise CanNotFormatError('Not well formated. Expecting something like May,21st.2015')
 
 if __name__ == "__main__":
     BaseParser.main(_current)
