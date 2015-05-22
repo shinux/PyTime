@@ -96,7 +96,7 @@ and other useful methods.
 
 ## Contributors
 - Sinux
-- [felipevolpone](github.com/felipevolpone)
+- [felipevolpone](https://github.com/felipevolpone)
 
 
 ## License

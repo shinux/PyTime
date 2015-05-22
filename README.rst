@@ -116,7 +116,7 @@ Contributors
 ------------
 
 -  Sinux
--  `felipevolpone <github.com/felipevolpone>`__
+-  `felipevolpone <https://github.com/felipevolpone>`__
 
 License
 -------
