@@ -8,13 +8,16 @@ import datetime
 import calendar
 import calendar
 from pprint import pprint
-from pytime import exception
 
 try:
     from pytime import pytime, filter
+    from pytime import exception
 except ImportError:
     sys.path.append('../')
     from pytime import pytime, filter
+    from pytime import exception
+
+
 
 
 class TestPyTime(unittest.TestCase):
@@ -148,7 +151,9 @@ class TestPyTime(unittest.TestCase):
 
         #validating the use with blank spaces
         self.assertEqual(datetime.date(2015, 1, 1), pytime.parse('Jan.1 st, 2015'))
-        
+        self.assertEqual(datetime.date(2015, 1, 2), pytime.parse('January 2nd 2015'))
+        self.assertEqual(datetime.date(2015, 1, 3), pytime.parse('Jan, 3rd 2015'))
+
         #validating the name of months and the returned datetime
         self.assertEqual(datetime.date(2015, 1, 2), pytime.parse('Jan.2st,2015'))
         self.assertEqual(datetime.date(2015, 2, 19), pytime.parse('Feb.19st,2015'))
