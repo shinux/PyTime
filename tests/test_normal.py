@@ -8,7 +8,7 @@ import datetime
 import calendar
 import calendar
 from pprint import pprint
-
+from pytime import exception
 
 try:
     from pytime import pytime, filter
@@ -144,7 +144,9 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this10)
 
     def test_from_str(self):
-        self.assertRaises(Exception, pytime.parse('App.19st,2015'))
+        with self.assertRaises(exception.CanNotFormatError):
+            pytime.parse('App.19st,2015')
+        #self.failUnlessRaises(exception.CanNotFormatError, pytime.parse('App.19st,2015'))
 
         #validating the use with blank spaces
         self.assertEqual(datetime.date(2015, 1, 1), pytime.parse('Jan.1 st, 2015'))
