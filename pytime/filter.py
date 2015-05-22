@@ -112,7 +112,7 @@ class BaseParser(object):
         for function in functions_to_try:
             try:
                 return function(string)
-            except Exception, e:
+            except Exception as e:
                 raised_exception = e
 
         if raised_exception:
