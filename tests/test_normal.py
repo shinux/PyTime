@@ -144,10 +144,7 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this10)
 
     def test_from_str(self):
-        #with self.assertRaises(exception.CanNotFormatError):
-        #    pytime.parse('App.19st,2015')
         self.assertRaises(exception.CanNotFormatError, pytime.parse, 'App.19st,2015')
-        #self.failUnlessRaises(exception.CanNotFormatError, pytime.parse('App.19st,2015'))
 
         #validating the use with blank spaces
         self.assertEqual(datetime.date(2015, 1, 1), pytime.parse('Jan.1 st, 2015'))
