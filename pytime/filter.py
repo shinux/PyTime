@@ -108,7 +108,7 @@ class BaseParser(object):
     @staticmethod
     def __parse_not_only_str(string):
         functions_to_try = [BaseParser.from_str, BaseParser.parse_diff]
-        raised_exception = None 
+        raised_exception = None
         for function in functions_to_try:
             try:
                 return function(string)
@@ -117,7 +117,7 @@ class BaseParser(object):
 
         if raised_exception:
             raise raised_exception
-    
+
     @staticmethod
     def _datetime_parser(value):
         return value
@@ -135,7 +135,7 @@ class BaseParser(object):
                 method = BaseParser._datetime_parser
             else:
                 method = BaseParser._special_parser
-            
+
             if hasattr(method, '__call__'):
                 return method(value)
             else:
@@ -254,17 +254,17 @@ class BaseParser(object):
             Given a date in the format: Jan,21st.2015
             will return a datetime of it.
         """
-
-        month = date[:3]
+        month = date[:3][0] + date[:3][-2:].lower()
         if month not in NAMED_MONTHS:
             raise CanNotFormatError('Month not recognized')
-        
-        date = date.replace(',','.')
+
+        date = date.replace(',','').replace(' ', '').replace('.', '')
         try:
-            day, year = date.split('.')[1] , date.split('.')[2]
-            numeric_day = int(re.findall('\d+', day)[0])
+            day_unit = [x for x in ['st', 'rd', 'nd', 'th'] if x in date][0]
+            day = int(re.search(r'\d+', date.split(day_unit)[0]).group())
+            year = int(re.search(r'\d+', date.split(day_unit)[1]).group())
             numeric_month = NAMED_MONTHS[month]
-            return datetime.date(int(year), numeric_month, numeric_day)
+            return datetime.date(int(year), numeric_month, day)
         except:
             raise CanNotFormatError('Not well formated. Expecting something like May,21st.2015')
 
