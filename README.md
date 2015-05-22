@@ -33,7 +33,7 @@ Parse nonregular datetime string to datetime stamp:
 datetime.date(2015, 4, 3)
 >>>pytime.parse('Oct, 1st. 2015')
 datetime.date(2015, 10, 1)
->>>pytime.parse('Nov21th2015')
+>>>pytime.parse('NOV21th2015')
 datetime.date(2015, 11, 21)
 >>>
 >>>pytime.parse('2015517')
