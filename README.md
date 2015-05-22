@@ -89,6 +89,11 @@ Get days between two date.
 
 and other useful methods.
 
+## Contributors
+- Sinux (github.com/shnode)
+- @felipevolpone (github.com/felipevolpone)
+
+
 ## License
 
 MIT
