@@ -29,6 +29,11 @@ datetime.datetime(2017, 4, 21, 0, 29)
 
 Parse nonregular datetime string to datetime stamp:
 ```python
+>>>pytime.parse('April 3rd 2015')
+datetime.date(2015, 4, 3)
+>>>pytime.parse('Oct, 1st. 2015')
+datetime.date(2015, 10, 1)
+>>>
 >>>pytime.parse('2015517')
 datetime.date(2015, 5, 17)
 >>>
@@ -90,8 +95,8 @@ Get days between two date.
 and other useful methods.
 
 ## Contributors
-- Sinux (github.com/shnode)
-- @felipevolpone (github.com/felipevolpone)
+- Sinux
+- [felipevolpone](github.com/felipevolpone)
 
 
 ## License
