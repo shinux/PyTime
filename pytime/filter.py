@@ -123,6 +123,10 @@ class BaseParser(object):
         return value
 
     @staticmethod
+    def _timestamp_parser(value):
+        return datetime.datetime.fromtimestamp(value)
+
+    @staticmethod
     def _special_parser(value):
         return value
 
@@ -133,6 +137,8 @@ class BaseParser(object):
                 method = BaseParser._str_parser(value)
             elif isinstance(value, (datetime.date, datetime.time, datetime.datetime)):
                 method = BaseParser._datetime_parser
+            elif isinstance(value, (int, float)):
+                method = BaseParser._timestamp_parser
             else:
                 method = BaseParser._special_parser
 
