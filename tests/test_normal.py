@@ -9,15 +9,11 @@ import calendar
 import calendar
 from pprint import pprint
 
-try:
-    from pytime import pytime, filter
-    from pytime import exception
-except ImportError:
-    sys.path.append('../')
-    from pytime import pytime, filter
-    from pytime import exception
+sys.path.insert(0, '.')
+sys.path.insert(0, '../')
 
-
+from pytime import pytime, filter
+from pytime import exception
 
 
 class TestPyTime(unittest.TestCase):
