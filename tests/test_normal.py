@@ -4,21 +4,19 @@
 import sys
 import unittest
 import os
+import time
 import datetime
 import calendar
 import calendar
 from pprint import pprint
 
-try:
-    from pytime import pytime, filter
-    from pytime import exception
-except ImportError:
-    sys.path.append('../')
-    from pytime import pytime, filter
-    from pytime import exception
+sys.path.insert(0, '.')
+sys.path.insert(0, '../')
 
+from pytime import pytime, filter
+from pytime import exception
 
-
+gmt8offset = time.timezone + 28800
 
 class TestPyTime(unittest.TestCase):
     def setUp(self):
@@ -51,6 +49,8 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this12)
         this13 = pytime.parse('2015517 23:23:23') == datetime.datetime(2015, 5, 17, 23, 23, 23)
         self.assertTrue(this13)
+        this14 = pytime.parse(1420041600 + gmt8offset) == datetime.datetime(2015, 1, 1, 0, 0, 0)
+        self.assertTrue(this14)
 
     def test_count(self):
         self.assertEqual(pytime.count('2015517', '2015519'), datetime.timedelta(-2))
@@ -71,6 +71,10 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this5)
         this6 = pytime.yesterday('2015-5-29') == datetime.date(2015, 5, 28)
         self.assertTrue(this6)
+        this7 = pytime.yesterday(1432310400 + gmt8offset) == datetime.datetime(2015, 5, 22)
+        self.assertTrue(this7)
+        this8 = pytime.tomorrow(1432310400 + gmt8offset) == datetime.datetime(2015, 5, 24)
+        self.assertTrue(this8)
 
     def test_method(self):
         self.assertEqual(pytime.daysrange('2015-5-17', '2015-5-21'),
@@ -123,6 +127,7 @@ class TestPyTime(unittest.TestCase):
         self.assertEqual(pytime.last_month('2015-5-17', True), (datetime.date(2015, 4, 1), datetime.date(2015, 4, 30)))
         self.assertEqual(pytime.next_month('2015-5-17'), (datetime.date(2015, 6, 1), datetime.date(2015, 7, 1)))
         self.assertEqual(pytime.next_month('2015-5-17', True), (datetime.date(2015, 6, 1), datetime.date(2015, 6, 30)))
+        self.assertTrue(pytime.next_month(1432310400 + gmt8offset, True), (datetime.datetime(2015, 6, 1), datetime.datetime(2015, 6, 30)))
 
     def test_festival(self):
         this1 = pytime.newyear(2015) == datetime.date(2015, 1, 1)
@@ -171,3 +176,4 @@ class TestPyTime(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

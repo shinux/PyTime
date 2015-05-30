@@ -99,6 +99,7 @@ and other useful methods.
 ## Contributors
 - Sinux
 - [felipevolpone](https://github.com/felipevolpone)
+- [fy](https://github.com/fy0)
 
 
 ## License
