@@ -135,5 +135,5 @@ MIT
    :target: http://badge.fury.io/py/pytime
 .. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/PyTime.svg
    :target: https://pypi.python.org/pypi/pytime/
-.. |Downloads| image:: https://img.shields.io/pypi/dw/Django.svg
+.. |Downloads| image:: https://img.shields.io/pypi/dw/PyTime.svg
    :target: https://pypi.python.org/pypi/pytime/
