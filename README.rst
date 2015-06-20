@@ -35,7 +35,7 @@ length, support out of order or in capital unit:
     >>>pytime.after(pytime.tomorrow('15.5.17'), '23month3dy29minu')   # 23months 3days 29minutes after 2015-5-17's next day
     datetime.datetime(2017, 4, 21, 0, 29)
 
-Parse nonregular datetime string to datetime stamp:
+Parse nonregular datetime string to datetime:
 
 .. code:: python
 
@@ -43,6 +43,8 @@ Parse nonregular datetime string to datetime stamp:
     datetime.date(2015, 4, 3)
     >>>pytime.parse('Oct, 1st. 2015')
     datetime.date(2015, 10, 1)
+    >>>pytime.parse('NOV21th2015')
+    datetime.date(2015, 11, 21)
     >>>
     >>>pytime.parse('2015517')
     datetime.date(2015, 5, 17)
@@ -52,6 +54,9 @@ Parse nonregular datetime string to datetime stamp:
     >>>
     >>>pytime.parse('92-11-2')
     datetime.date(1992, 11, 2)
+    >>>
+    >>>pytime.parse(1432310400)          # support datetimestamp for all function
+    datetime.datetime(2015, 5, 23, 0, 0)
 
 Calculate week and month in a easy way. Normally we want to use these
 binate date in script, from Monday to next Monday which means
@@ -117,6 +122,7 @@ Contributors
 
 -  Sinux
 -  `felipevolpone <https://github.com/felipevolpone>`__
+-  `fy <https://github.com/fy0>`__
 
 License
 -------
@@ -127,7 +133,7 @@ MIT
    :target: https://travis-ci.org/shnode/PyTime
 .. |PyPI version| image:: https://badge.fury.io/py/pytime.svg
    :target: http://badge.fury.io/py/pytime
-.. |Supported Python versions| image:: https://pypip.in/py_versions/pytime/badge.svg
+.. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/PyTime.svg
    :target: https://pypi.python.org/pypi/pytime/
-.. |Downloads| image:: https://pypip.in/download/pytime/badge.svg?period=week
+.. |Downloads| image:: https://img.shields.io/pypi/dw/Django.svg
    :target: https://pypi.python.org/pypi/pytime/
