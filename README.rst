@@ -1,7 +1,7 @@
 PyTime
 ======
 
-|Build Status| |PyPI version| |Supported Python versions| |Downloads|
+|Build Status| |PyPI version| |Supported Python versions|
 
 PyTime is a easy-use Python module which aims to operate
 date/time/datetime by string.
@@ -134,6 +134,4 @@ MIT
 .. |PyPI version| image:: https://badge.fury.io/py/pytime.svg
    :target: http://badge.fury.io/py/pytime
 .. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/PyTime.svg
-   :target: https://pypi.python.org/pypi/pytime/
-.. |Downloads| image:: https://img.shields.io/pypi/dw/PyTime.svg
    :target: https://pypi.python.org/pypi/pytime/
