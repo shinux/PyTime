@@ -129,8 +129,8 @@ License
 
 MIT
 
-.. |Build Status| image:: https://travis-ci.org/shnode/PyTime.svg?branch=master
-   :target: https://travis-ci.org/shnode/PyTime
+.. |Build Status| image:: https://travis-ci.org/shinux/PyTime.svg?branch=master
+   :target: https://travis-ci.org/shinux/PyTime
 .. |PyPI version| image:: https://badge.fury.io/py/pytime.svg
    :target: http://badge.fury.io/py/pytime
 .. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/PyTime.svg

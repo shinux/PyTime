@@ -3,20 +3,18 @@
 
 import sys
 import unittest
-import os
 import time
 import datetime
-import calendar
-import calendar
-from pprint import pprint
 
 sys.path.insert(0, '.')
 sys.path.insert(0, '../')
 
-from pytime import pytime, filter
+from pytime import pytime
 from pytime import exception
 
 gmt8offset = time.timezone + 28800
+current_year = datetime.datetime.now().year
+
 
 class TestPyTime(unittest.TestCase):
     def setUp(self):
@@ -91,9 +89,9 @@ class TestPyTime(unittest.TestCase):
                          pytime.daysrange('2015-5-17', datetime.date(2015, 5, 21), True))
         this1 = pytime.lastday(2015, 5) == datetime.date(2015, 5, 31)
         self.assertTrue(this1)
-        this2 = pytime.lastday(2015) == pytime.lastday()
+        this2 = pytime.lastday(current_year) == pytime.lastday()
         self.assertTrue(this2)
-        this3 = pytime.lastday(month=6) == pytime.lastday(2015, 6)
+        this3 = pytime.lastday(month=6) == pytime.lastday(current_year, 6)
         self.assertTrue(this3)
         this4 = pytime.midnight('2015-5-17') == datetime.datetime(2015, 5, 17, 0, 0, 0)
         self.assertTrue(this4)
@@ -154,12 +152,12 @@ class TestPyTime(unittest.TestCase):
     def test_from_str(self):
         self.assertRaises(exception.CanNotFormatError, pytime.parse, 'App.19st,2015')
 
-        #validating the use with blank spaces
+        # validating the use with blank spaces
         self.assertEqual(datetime.date(2015, 1, 1), pytime.parse('Jan.1 st, 2015'))
         self.assertEqual(datetime.date(2015, 1, 2), pytime.parse('January 2nd 2015'))
         self.assertEqual(datetime.date(2015, 1, 3), pytime.parse('Jan, 3rd 2015'))
 
-        #validating the name of months and the returned datetime
+        # validating the name of months and the returned datetime
         self.assertEqual(datetime.date(2015, 1, 2), pytime.parse('Jan.2st,2015'))
         self.assertEqual(datetime.date(2015, 2, 19), pytime.parse('Feb.19st,2015'))
         self.assertEqual(datetime.date(2015, 3, 19), pytime.parse('Mar.19st,2015'))
@@ -176,4 +174,3 @@ class TestPyTime(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

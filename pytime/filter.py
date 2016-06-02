@@ -38,6 +38,7 @@ NAMED_MONTHS = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
                 'May': 5, 'Jun': 6, 'Jul': 7, 'Agu': 8,
                 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
 
+
 def filter_unit(arg):
     if len(arg) > 1:
         arg = arg.lower()
@@ -264,7 +265,7 @@ class BaseParser(object):
         if month not in NAMED_MONTHS:
             raise CanNotFormatError('Month not recognized')
 
-        date = date.replace(',','').replace(' ', '').replace('.', '')
+        date = date.replace(',', '').replace(' ', '').replace('.', '')
         try:
             day_unit = [x for x in ['st', 'rd', 'nd', 'th'] if x in date][0]
             day = int(re.search(r'\d+', date.split(day_unit)[0]).group())

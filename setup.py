@@ -5,19 +5,18 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+import pytime
 
 here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
-
-import pytime
 setup(
     name='pytime',
     version=pytime.__version__,
     description='A easy-use module to operate datetime by string',
     long_description=long_description,
-    url='https://github.com/shnode/PyTime',
+    url='https://github.com/shinux/PyTime',
     author='Sinux',
     author_email='nsinux@gmail.com',
     license='MIT',
