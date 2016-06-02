@@ -102,6 +102,7 @@ and other useful methods.
 - Sinux
 - [felipevolpone](https://github.com/felipevolpone)
 - [fy](https://github.com/fy0)
+- [Joshua Dong](https://github.com/Joshua1986)
 
 
 ## License

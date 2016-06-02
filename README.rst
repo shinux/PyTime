@@ -123,6 +123,7 @@ Contributors
 -  Sinux
 -  `felipevolpone <https://github.com/felipevolpone>`__
 -  `fy <https://github.com/fy0>`__
+-  `Joshua Dong <https://github.com/Joshua1986>`__
 
 License
 -------
