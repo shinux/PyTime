@@ -300,7 +300,7 @@ def easter(year=None):
     if d > 0:
         return datetime.date(y, 4, d)
     else:
-        return datetime.date(y, 3, (31 - d))
+        return datetime.date(y, 3, (31 + d))
 
 
 def thanks(year=None):
