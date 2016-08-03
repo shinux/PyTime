@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/pytime.svg)](http://badge.fury.io/py/pytime)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/PyTime.svg)](https://pypi.python.org/pypi/pytime/)
 
-PyTime is a easy-use Python module which aims to operate date/time/datetime by string.
+PyTime is an easy-use Python module which aims to operate date/time/datetime by string.
 
 PyTime allows you using nonregular datetime string to generate and calculate datetime at most situation.
 
