@@ -82,6 +82,11 @@ datetime.date(2016, 5, 8)
 datetime.date(1999, 4, 4)
 ```
 
+Also, you can use this way. The month've always just the three initial chars. 
+```python
+>>>pytime.parse('May,21st.2015')
+```
+
 
 Get days between two date.
 ```python
