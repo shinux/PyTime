@@ -81,6 +81,7 @@ def daysrange(first=None, second=None, wipe=False):
 
     :param first: datetime, date or string
     :param second: datetime, date or string
+    :param wipe: boolean, excludes first and last date from range when True. Default is False.
     :return: list
     """
     _first, _second = parse(first), parse(second)

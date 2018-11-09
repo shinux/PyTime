@@ -273,7 +273,8 @@ class BaseParser(object):
             numeric_month = NAMED_MONTHS[month]
             return datetime.date(int(year), numeric_month, day)
         except:
-            raise CanNotFormatError('Not well formated. Expecting something like May,21st.2015')
+            raise CanNotFormatError('Not well formatted. Expecting something like May,21st.2015')
+
 
 if __name__ == "__main__":
     BaseParser.main(_current)
