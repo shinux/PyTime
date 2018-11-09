@@ -212,8 +212,8 @@ def next_week(arg=_date, clean=False):
 
 def this_month(arg=_date, clean=False):
     _arg = _datetime_to_date(arg)
-    return datetime.date(_arg.year, _arg.month, 1), lastday(_arg.year, _arg.month) if clean \
-        else lastday(_arg.year, _arg.month) + _ONE_DAY
+    return datetime.date(_arg.year, _arg.month, 1), last_day(_arg.year, _arg.month) if clean \
+        else last_day(_arg.year, _arg.month) + _ONE_DAY
 
 
 def last_month(arg=_date, clean=False):
@@ -226,9 +226,9 @@ def last_month(arg=_date, clean=False):
 
 def next_month(arg=_date, clean=False):
     _arg = _datetime_to_date(arg)
-    this_month_last_day = lastday(_arg.year, _arg.month)
+    this_month_last_day = last_day(_arg.year, _arg.month)
     next_month_first_day = this_month_last_day + _ONE_DAY
-    next_month_last_day = lastday(next_month_first_day.year, next_month_first_day.month)
+    next_month_last_day = last_day(next_month_first_day.year, next_month_first_day.month)
     return next_month_first_day, next_month_last_day if clean else next_month_last_day + _ONE_DAY
 
 
@@ -280,7 +280,7 @@ def father(year=None):
 
 
 def halloween(year=None):
-    return lastday(month=10) if not year else lastday(year, 10)
+    return last_day(month=10) if not year else last_day(year, 10)
 
 
 def easter(year=None):
