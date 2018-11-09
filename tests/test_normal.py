@@ -69,9 +69,9 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this5)
         this6 = pytime.yesterday('2015-5-29') == datetime.date(2015, 5, 28)
         self.assertTrue(this6)
-        this7 = pytime.yesterday(1432310400 + gmt8offset) == datetime.datetime(2015, 5, 22)
+        this7 = pytime.yesterday(1432310400 + gmt8offset) == datetime.datetime(2015, 5, 22, 0, 0)
         self.assertTrue(this7)
-        this8 = pytime.tomorrow(1432310400 + gmt8offset) == datetime.datetime(2015, 5, 24)
+        this8 = pytime.tomorrow(1432310400 + gmt8offset) == datetime.datetime(2015, 5, 24, 0, 0)
         self.assertTrue(this8)
 
     def test_method(self):
