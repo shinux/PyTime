@@ -75,7 +75,7 @@ def yesterday(date=None):
 ########################
 
 
-def daysrange(first=None, second=None, wipe=False):
+def days_range(first=None, second=None, wipe=False):
     """
     get all days between first and second
 
@@ -93,7 +93,7 @@ def daysrange(first=None, second=None, wipe=False):
     return date_list
 
 
-def lastday(year=_year, month=_month):
+def last_day(year=_year, month=_month):
     """
     get the current month's last day
     :param year:  default to current year
@@ -237,7 +237,7 @@ def next_month(arg=_date, clean=False):
 ######################
 
 
-def newyear(year=None):
+def new_year(year=None):
     return datetime.date(int(year), 1, 1) if year else datetime.date(_year, 1, 1)
 
 
@@ -253,7 +253,7 @@ def christmas(year=None):
     return datetime.date(int(year), 12, 25) if year else datetime.date(_year, 12, 25)
 
 
-def christeve(year=None):
+def christ_eve(year=None):
     return yesterday(christmas(year))
 
 
