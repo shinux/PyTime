@@ -75,12 +75,13 @@ def yesterday(date=None):
 ########################
 
 
-def daysrange(first=None, second=None, wipe=False):
+def days_range(first=None, second=None, wipe=False):
     """
     get all days between first and second
 
     :param first: datetime, date or string
     :param second: datetime, date or string
+    :param wipe: boolean, excludes first and last date from range when True. Default is False.
     :return: list
     """
     _first, _second = parse(first), parse(second)
@@ -92,7 +93,7 @@ def daysrange(first=None, second=None, wipe=False):
     return date_list
 
 
-def lastday(year=_year, month=_month):
+def last_day(year=_year, month=_month):
     """
     get the current month's last day
     :param year:  default to current year
@@ -211,8 +212,8 @@ def next_week(arg=_date, clean=False):
 
 def this_month(arg=_date, clean=False):
     _arg = _datetime_to_date(arg)
-    return datetime.date(_arg.year, _arg.month, 1), lastday(_arg.year, _arg.month) if clean \
-        else lastday(_arg.year, _arg.month) + _ONE_DAY
+    return datetime.date(_arg.year, _arg.month, 1), last_day(_arg.year, _arg.month) if clean \
+        else last_day(_arg.year, _arg.month) + _ONE_DAY
 
 
 def last_month(arg=_date, clean=False):
@@ -225,9 +226,9 @@ def last_month(arg=_date, clean=False):
 
 def next_month(arg=_date, clean=False):
     _arg = _datetime_to_date(arg)
-    this_month_last_day = lastday(_arg.year, _arg.month)
+    this_month_last_day = last_day(_arg.year, _arg.month)
     next_month_first_day = this_month_last_day + _ONE_DAY
-    next_month_last_day = lastday(next_month_first_day.year, next_month_first_day.month)
+    next_month_last_day = last_day(next_month_first_day.year, next_month_first_day.month)
     return next_month_first_day, next_month_last_day if clean else next_month_last_day + _ONE_DAY
 
 
@@ -236,7 +237,7 @@ def next_month(arg=_date, clean=False):
 ######################
 
 
-def newyear(year=None):
+def new_year(year=None):
     return datetime.date(int(year), 1, 1) if year else datetime.date(_year, 1, 1)
 
 
@@ -252,7 +253,7 @@ def christmas(year=None):
     return datetime.date(int(year), 12, 25) if year else datetime.date(_year, 12, 25)
 
 
-def christeve(year=None):
+def christ_eve(year=None):
     return yesterday(christmas(year))
 
 
@@ -279,7 +280,7 @@ def father(year=None):
 
 
 def halloween(year=None):
-    return lastday(month=10) if not year else lastday(year, 10)
+    return last_day(month=10) if not year else last_day(year, 10)
 
 
 def easter(year=None):

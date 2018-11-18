@@ -75,23 +75,23 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this8)
 
     def test_method(self):
-        self.assertEqual(pytime.daysrange('2015-5-17', '2015-5-21'),
+        self.assertEqual(pytime.days_range('2015-5-17', '2015-5-21'),
                          [datetime.date(2015, 5, 21),
                           datetime.date(2015, 5, 20),
                           datetime.date(2015, 5, 19),
                           datetime.date(2015, 5, 18),
                           datetime.date(2015, 5, 17)])
-        self.assertEqual(pytime.daysrange('2015-5-17', '2015-5-21', True),
+        self.assertEqual(pytime.days_range('2015-5-17', '2015-5-21', True),
                          [datetime.date(2015, 5, 20),
                           datetime.date(2015, 5, 19),
                           datetime.date(2015, 5, 18)])
-        self.assertEqual(pytime.daysrange(datetime.date(2015, 5, 17), '2015-5-21', True),
-                         pytime.daysrange('2015-5-17', datetime.date(2015, 5, 21), True))
-        this1 = pytime.lastday(2015, 5) == datetime.date(2015, 5, 31)
+        self.assertEqual(pytime.days_range(datetime.date(2015, 5, 17), '2015-5-21', True),
+                         pytime.days_range('2015-5-17', datetime.date(2015, 5, 21), True))
+        this1 = pytime.last_day(2015, 5) == datetime.date(2015, 5, 31)
         self.assertTrue(this1)
-        this2 = pytime.lastday(current_year) == pytime.lastday()
+        this2 = pytime.last_day(current_year) == pytime.last_day()
         self.assertTrue(this2)
-        this3 = pytime.lastday(month=6) == pytime.lastday(current_year, 6)
+        this3 = pytime.last_day(month=6) == pytime.last_day(current_year, 6)
         self.assertTrue(this3)
         this4 = pytime.midnight('2015-5-17') == datetime.datetime(2015, 5, 17, 0, 0, 0)
         self.assertTrue(this4)
@@ -128,7 +128,7 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(pytime.next_month(1432310400 + gmt8offset, True), (datetime.datetime(2015, 6, 1), datetime.datetime(2015, 6, 30)))
 
     def test_festival(self):
-        this1 = pytime.newyear(2015) == datetime.date(2015, 1, 1)
+        this1 = pytime.new_year(2015) == datetime.date(2015, 1, 1)
         self.assertTrue(this1)
         this2 = pytime.valentine(2014) == datetime.date(2014, 2, 14)
         self.assertTrue(this2)
@@ -136,7 +136,7 @@ class TestPyTime(unittest.TestCase):
         self.assertTrue(this3)
         this4 = pytime.christmas(2012) == datetime.date(2012, 12, 25)
         self.assertTrue(this4)
-        this5 = pytime.christeve(2011) == datetime.date(2011, 12, 24)
+        this5 = pytime.christ_eve(2011) == datetime.date(2011, 12, 24)
         self.assertTrue(this5)
         this6 = pytime.mother(2010) == datetime.date(2010, 5, 9)
         self.assertTrue(this6)

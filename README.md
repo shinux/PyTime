@@ -19,7 +19,7 @@ Calculate `datetime` all by string, accept unit for short or overall length, sup
 ```python
 >>>from pytime import pytime
 >>>
->>>pytime.before('2015.5.17', '2years 3mon 23week 3d 2hr')     # 2years 3monhts 23weeks 3days 2hours before 2015.5.17
+>>>pytime.before('2015.5.17', '2years 3mon 23week 3d 2hr')     # 2years 3months 23weeks 3days 2hours before 2015.5.17
 datetime.datetime(2012, 9, 5, 22, 0)
 >>>
 >>>pytime.after(pytime.tomorrow('15.5.17'), '23month3dy29minu')   # 23months 3days 29minutes after 2015-5-17's next day
@@ -85,7 +85,7 @@ datetime.date(1999, 4, 4)
 
 Get days between two date.
 ```python
->>>pytime.daysrange('2015-5-17', '2015-5-23')
+>>>pytime.days_range('2015-5-17', '2015-5-23')
 [datetime.date(2015, 5, 23),
  datetime.date(2015, 5, 22),
  datetime.date(2015, 5, 21),

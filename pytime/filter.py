@@ -108,11 +108,11 @@ class BaseParser(object):
 
     @staticmethod
     def __parse_not_only_str(string):
-        functions_to_try = [BaseParser.from_str, BaseParser.parse_diff]
+        baseParser_functions_to_try = [BaseParser.from_str, BaseParser.parse_diff]
         raised_exception = None
-        for function in functions_to_try:
+        for baseParser_function in baseParser_functions_to_try:
             try:
-                return function(string)
+                return baseParser_function(string)
             except Exception as e:
                 raised_exception = e
 
@@ -273,7 +273,8 @@ class BaseParser(object):
             numeric_month = NAMED_MONTHS[month]
             return datetime.date(int(year), numeric_month, day)
         except:
-            raise CanNotFormatError('Not well formated. Expecting something like May,21st.2015')
+            raise CanNotFormatError('Not well formatted. Expecting something like May,21st.2015')
+
 
 if __name__ == "__main__":
     BaseParser.main(_current)
