@@ -318,6 +318,13 @@ def thanks(year=None):
     return datetime.date(nov_first.year, 11, current_day)
 
 
+def vatertag(year=None):
+    """
+    father's day in Germany
+    """
+    return after(easter(year), '39days').date()
+
+
 if __name__ == '__main__':
     # _time_filter('2015-01-03')
     # print(calendar.monthrange(2015, 10))
