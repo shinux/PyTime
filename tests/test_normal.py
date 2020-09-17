@@ -149,6 +149,13 @@ class TestPyTime(unittest.TestCase):
         this10 = pytime.thanks(2006) == datetime.date(2006, 11, 23)
         self.assertTrue(this10)
 
+        this11 = pytime.vatertag(2020) == datetime.date(2020, 5, 21)
+        self.assertTrue(this11)
+        this12 = pytime.vatertag(2021) == datetime.date(2021, 5, 13)
+        self.assertTrue(this12)
+        this13 = pytime.vatertag(2025) == datetime.date(2025, 5, 29)
+        self.assertTrue(this13)
+
     def test_from_str(self):
         self.assertRaises(exception.CanNotFormatError, pytime.parse, 'App.19st,2015')
 
