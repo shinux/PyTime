@@ -80,6 +80,8 @@ datetime.date(2016, 5, 8)
 >>>
 >>>pytime.easter(1999)          # 1999 Easter
 datetime.date(1999, 4, 4)
+>>>pytime.vatertag(2020)        # Fater's Day in Germany
+datetime.date(2020, 5, 21)
 ```
 
 
