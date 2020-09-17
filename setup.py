@@ -14,7 +14,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='pytime',
     version=pytime.__version__,
-    description='A easy-use module to operate datetime by string',
+    description='An easy-use module to operate datetime by string',
     long_description=long_description,
     url='https://github.com/shinux/PyTime',
     author='Sinux',
