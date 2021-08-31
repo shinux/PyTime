@@ -172,7 +172,7 @@ class TestPyTime(unittest.TestCase):
         self.assertEqual(datetime.date(2015, 5, 19), pytime.parse('May.19st,2015'))
         self.assertEqual(datetime.date(2015, 6, 19), pytime.parse('Jun.19st,2015'))
         self.assertEqual(datetime.date(2014, 7, 19), pytime.parse('Jul.19st,2014'))
-        self.assertEqual(datetime.date(2015, 8, 19), pytime.parse('Agu.19st,2015'))
+        self.assertEqual(datetime.date(2015, 8, 19), pytime.parse('Aug.19st,2015'))
         self.assertEqual(datetime.date(2015, 9, 19), pytime.parse('Sep.19st,2015'))
         self.assertEqual(datetime.date(2015, 10, 19), pytime.parse('Oct.19st,2015'))
         self.assertEqual(datetime.date(2015, 11, 19), pytime.parse('Nov.19st,2015'))
