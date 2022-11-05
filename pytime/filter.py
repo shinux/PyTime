@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import sys
 import datetime
 import re
+import sys
 from itertools import chain
-from .exception import UnexpectedTypeError, CanNotFormatError
 
+from .exception import CanNotFormatError, UnexpectedTypeError
 
 py = sys.version_info
 py3k = py >= (3, 0, 0)
@@ -42,14 +42,14 @@ NAMED_MONTHS = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
 def filter_unit(arg):
     if len(arg) > 1:
         arg = arg.lower()
-    result = [key for key in UNIT_DICT.keys() if arg in UNIT_DICT[key]]
+    result = [key for key in UNIT_DICT if arg in UNIT_DICT[key]]
     if result:
         return result[0]
     else:
         raise CanNotFormatError
 
 
-class BaseParser(object):
+class BaseParser():
     """Parse string to regular datetime/date type
 
     1990-10-28 23:23:23  - 19

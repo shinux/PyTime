@@ -11,10 +11,10 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import datetime
 import calendar
-from .filter import BaseParser
+import datetime
 
+from .filter import BaseParser
 
 bp = BaseParser.main
 dp = BaseParser.parse_diff

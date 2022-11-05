@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import sys
-import unittest
-import time
 import datetime
+import sys
+import time
+import unittest
 
 sys.path.insert(0, '.')
 sys.path.insert(0, '../')
 
-from pytime import pytime
-from pytime import exception
+from pytime import exception, pytime
 
 gmt8offset = time.timezone + 28800
 current_year = datetime.datetime.now().year
